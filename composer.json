@@ -3,6 +3,7 @@
     "description": "Friendly PHP library for interacting with the powerful MediaWiki Action API",
     "keywords": ["wiki","mediawiki","wikipedia","wikipedia-api","mediawiki-api"],
     "homepage": "https://github.com/Sophivorus/EasyWiki",
+	"license": "GPL-3.0-or-later",
     "type": "library",
     "authors": [
         {
