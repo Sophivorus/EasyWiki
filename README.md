@@ -66,7 +66,7 @@ EasyWiki has a very simple architecture:
 
 If none of the shorthand methods serves your needs, you can use the action methods, and if none of those serves you either, you can fallback to the base methods.
 
-Each method has one argument for each required parameter, and an optional last argument to specify extra parameters.
+Each method has one argument for each required parameter and an optional last argument for extra parameters.
 
 ## Manual
 
@@ -192,3 +192,5 @@ The available options are the same as the ones available in the relevant MediaWi
 ### More
 
 Check the source code and the comments to learn about every available method.
+
+EasyWiki does very minimal assumptions. The only parameters hardcoded are the ones specifying the result format (json), result version (2) and the error format (plaintext). You can override them through the optional last argument.
