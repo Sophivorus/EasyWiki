@@ -47,7 +47,7 @@ class EasyWiki {
 		}
 		$response = json_decode( $response, true );
 		if ( $needle ) {
-			return $this->find( $needle, $response );
+			$response = $this->find( $needle, $response );
 		}
 		return $response;
 	}
@@ -80,7 +80,7 @@ class EasyWiki {
 		}
 		$response = json_decode( $response, true );
 		if ( $needle ) {
-			return $this->find( $needle, $response );
+			$response = $this->find( $needle, $response );
 		}
 		return $response;
 	}
@@ -149,19 +149,6 @@ class EasyWiki {
 			'redirects' => 1,
 		];
 		return $this->get( $params, $needle );
-		/*
-		// @todo Merge results
-		$pages = $data['query']['pages'];
-		while ( array_key_exists( 'continue', $data ) ) {
-			sleep( 1 );
-			$continue = $data['continue'];
-			unset( $data['continue'] );
-			$continueKey = array_key_first( $continue ); // The continue key varies but is always first
-			$continueValue = $continue[ $continueKey ];
-			$params[ $continueKey ] = $continueValue;
-			$data = $this->get( $params );
-		}
-		*/
 	}
 
 	/**
