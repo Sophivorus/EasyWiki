@@ -68,7 +68,7 @@ class EasyWiki {
 			$result = $api->getResult();
 			$data = $result->getResultData();
 		}
-		if ( $needle ) {
+		if ( $needle !== '' ) {
 			$data = $this->find( $needle, $data );
 		}
 		return $data;
@@ -111,7 +111,7 @@ class EasyWiki {
 			$result = $api->getResult();
 			$data = $result->getResultData();
 		}
-		if ( $needle ) {
+		if ( $needle !== '' ) {
 			$data = $this->find( $needle, $data );
 		}
 		return $data;
@@ -124,9 +124,12 @@ class EasyWiki {
 	 * @return mixed Value of the needle or null if not found
 	 */
 	public function find( string $needle, array $haystack ) {
+		if ( $needle === '' ) {
+			return $haystack;
+		}
 		$values = [];
 		foreach ( $haystack as $key => $value ) {
-			if ( $key === $needle ) {
+			if ( strval( $key ) === $needle ) {
 				$values[] = $value;
 			}
 			if ( is_array( $value ) ) {
@@ -149,7 +152,7 @@ class EasyWiki {
 	##################
 
 	/**
-	 * Login module
+	 * Do a POST request to the login module
 	 * @param string $user Bot username
 	 * @param string $pass Bot password
 	 * @return array Response data
@@ -170,14 +173,14 @@ class EasyWiki {
 	}
 
 	/**
-	 * Logout module
+	 * Do a POST request to the logout module
 	 */
 	public function logout() {
 		return $this->post( [ 'action' => 'logout' ] );
 	}
 
 	/**
-	 * Query module
+	 * Do a GET request to the query module
 	 * @param array $params Additional params for the query module
 	 * @param string $needle Key of the data to extract from the response
 	 * @return array Aggregated response data
@@ -191,7 +194,7 @@ class EasyWiki {
 	}
 
 	/**
-	 * Parse module
+	 * Do a GET request to the parse module
 	 * @param array $params Additional params for the parse module
 	 * @param string $needle Key of the data to extract from the response
 	 * @return array Response data
@@ -205,7 +208,7 @@ class EasyWiki {
 	}
 
 	/**
-	 * Edit module
+	 * Do a POST request to the edit module
 	 * @param string|int $page Name or ID of the page to edit
 	 * @param array $params Additional params for the edit module
 	 * @param string $needle Key of the data to extract from the response
@@ -222,7 +225,7 @@ class EasyWiki {
 	}
 
 	/**
-	 * Move module
+	 * Do a POST request to the move module
 	 * @param string|int $from Name or ID of the page to move
 	 * @param string $to New page name
 	 * @param array $params Additional params for the move module
@@ -241,7 +244,7 @@ class EasyWiki {
 	}
 
 	/**
-	 * Delete module
+	 * Do a POST request to the delete module
 	 * @param string|int $page Name or ID of the page to delete
 	 * @param array $params Additional parameters for delete module
 	 * @param string $needle Key of the data to extract from the response
@@ -361,61 +364,48 @@ class EasyWiki {
 	 * Get the categories of a page
 	 * @see https://en.wikipedia.org/w/api.php?action=help&modules=query+categories
 	 * @param string|int $page Name or ID of the page
-	 * @param string $key Key of the piece of info to get. Omit to get an array with all the info.
-	 * @return array|string Page categories
+	 * @return array|null Page categories or null if the page has no categories or doesn't exist
 	 */
-	public function getCategories( $page, $key = '' ) {
-		$params += [
+	public function getCategories( $page ) {
+		$params = [
 			'titles' => is_string( $page ) ? $page : null,
 			'pageids' => is_int( $page ) ? $page : null,
 			'prop' => 'categories',
 			'cllimit' => 'max',
 		];
-		return $this->query( $params, $key );
+		$data = $this->query( $params, '0' );
+		return $this->find( 'categories', $data );
 	}
 
 	/**
 	 * Get the basic info of a page
 	 * @see https://en.wikipedia.org/w/api.php?action=help&modules=query+info
 	 * @param string|int $page Name or ID of the page
-	 * @param string $key Key of the piece of info to get. Omit to get an array with all the info.
+	 * @param string $needle Key of the piece of info to get. Omit to get an array with all the info.
 	 * @return array|string Page info
 	 */
-	public function getInfo( $page, string $key = '' ) {
+	public function getInfo( $page, string $needle = '' ) {
 		$params = [
 			'titles' => is_string( $page ) ? $page : null,
 			'pageids' => is_int( $page ) ? $page : null,
 			'prop' => 'info',
+			'redirects' => 1,
 		];
-		return $this->query( $params, $key );
-	}
-
-	/**
-	 * Get the basic info of a page
-	 * @see https://en.wikipedia.org/w/api.php?action=help&modules=query+categoryinfo
-	 * @param string|int $page Name or ID of the category (include the "Category:" prefix)
-	 * @param string $key Key of the piece of info to get. Omit to get an array with all the info.
-	 * @return array|string Category info
-	 */
-	public function getCategoryInfo( $category, string $key = '' ) {
-		$params = [
-			'titles' => is_string( $category ) ? $category : null,
-			'pageids' => is_int( $category ) ? $category : null,
-			'prop' => 'categoryinfo',
-		];
-		return $this->query( $params, $key );
+		$data = $this->query( $params, '0' );
+		return $this->find( $needle, $data );
 	}
 
 	/**
 	 * Get the general info of the site
 	 * @see https://en.wikipedia.org/w/api.php?action=help&modules=query+siteinfo
-	 * @param string $key Key of the piece of info to get. Omit to get an array with all the info.
+	 * @param string $needle Key of the piece of info to get. Omit to get an array with all the info.
 	 * @return array|string Site info
 	 */
-	public function getSiteInfo( string $key = '' ) {
+	public function getSiteInfo( string $needle = '' ) {
 		$params = [
 			'meta' => 'siteinfo',
 		];
-		return $this->query( $params, $key );
+		$data = $this->query( $params, 'general' );
+		return $this->find( $needle, $data );
 	}
 }

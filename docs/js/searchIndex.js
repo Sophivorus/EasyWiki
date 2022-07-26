@@ -28,37 +28,37 @@ Search.appendIndex(
         },                {
             "fqsen": "\\EasyWiki\u003A\u003Alogin\u0028\u0029",
             "name": "login",
-            "summary": "Login\u0020module",
+            "summary": "Do\u0020a\u0020POST\u0020request\u0020to\u0020the\u0020login\u0020module",
             "url": "classes/EasyWiki.html#method_login"
         },                {
             "fqsen": "\\EasyWiki\u003A\u003Alogout\u0028\u0029",
             "name": "logout",
-            "summary": "Logout\u0020module",
+            "summary": "Do\u0020a\u0020POST\u0020request\u0020to\u0020the\u0020logout\u0020module",
             "url": "classes/EasyWiki.html#method_logout"
         },                {
             "fqsen": "\\EasyWiki\u003A\u003Aquery\u0028\u0029",
             "name": "query",
-            "summary": "Query\u0020module",
+            "summary": "Do\u0020a\u0020GET\u0020request\u0020to\u0020the\u0020query\u0020module",
             "url": "classes/EasyWiki.html#method_query"
         },                {
             "fqsen": "\\EasyWiki\u003A\u003Aparse\u0028\u0029",
             "name": "parse",
-            "summary": "Parse\u0020module",
+            "summary": "Do\u0020a\u0020GET\u0020request\u0020to\u0020the\u0020parse\u0020module",
             "url": "classes/EasyWiki.html#method_parse"
         },                {
             "fqsen": "\\EasyWiki\u003A\u003Aedit\u0028\u0029",
             "name": "edit",
-            "summary": "Edit\u0020module",
+            "summary": "Do\u0020a\u0020POST\u0020request\u0020to\u0020the\u0020edit\u0020module",
             "url": "classes/EasyWiki.html#method_edit"
         },                {
             "fqsen": "\\EasyWiki\u003A\u003Amove\u0028\u0029",
             "name": "move",
-            "summary": "Move\u0020module",
+            "summary": "Do\u0020a\u0020POST\u0020request\u0020to\u0020the\u0020move\u0020module",
             "url": "classes/EasyWiki.html#method_move"
         },                {
             "fqsen": "\\EasyWiki\u003A\u003Adelete\u0028\u0029",
             "name": "delete",
-            "summary": "Delete\u0020module",
+            "summary": "Do\u0020a\u0020POST\u0020request\u0020to\u0020the\u0020delete\u0020module",
             "url": "classes/EasyWiki.html#method_delete"
         },                {
             "fqsen": "\\EasyWiki\u003A\u003AgetToken\u0028\u0029",
@@ -100,11 +100,6 @@ Search.appendIndex(
             "name": "getInfo",
             "summary": "Get\u0020the\u0020basic\u0020info\u0020of\u0020a\u0020page",
             "url": "classes/EasyWiki.html#method_getInfo"
-        },                {
-            "fqsen": "\\EasyWiki\u003A\u003AgetCategoryInfo\u0028\u0029",
-            "name": "getCategoryInfo",
-            "summary": "Get\u0020the\u0020basic\u0020info\u0020of\u0020a\u0020page",
-            "url": "classes/EasyWiki.html#method_getCategoryInfo"
         },                {
             "fqsen": "\\EasyWiki\u003A\u003AgetSiteInfo\u0028\u0029",
             "name": "getSiteInfo",
