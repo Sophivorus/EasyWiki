@@ -1,6 +1,6 @@
 # EasyWiki
 
-**EasyWiki** is a friendly PHP library to interact with [MediaWiki](https://mediawiki.org/), the software of Wikipedia and many other wikis.
+**EasyWiki** is a friendly PHP library to interact with [MediaWiki](https://mediawiki.org/).
 
 ## Motivation
 
