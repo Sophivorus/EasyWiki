@@ -263,20 +263,24 @@ class EasyWiki {
 
 	/**
 	 * Get a token for write actions
+	 * @see https://en.wikipedia.org/w/api.php?action=help&modules=query+tokens
+	 * @see https://en.wikipedia.org/w/api.php?action=query&meta=tokens
+	 * @see https://www.mediawiki.org/wiki/API:Tokens
 	 * @param string $type Type of token to get
 	 * @return string Token
 	 */
-	 public function getToken( string $type = 'csrf', array $params = [] ) {
-		$params += [
+	 public function getToken( string $type = 'csrf' ) {
+		$params = [
 			'meta' => 'tokens',
 			'type' => $type
 		];
-		$token = $this->query( $params, $type . 'token' );
-		return $token;
+		return $this->query( $params, $type . 'token' );
 	}
 
 	/**
 	 * Get the wikitext of a page
+	 * @see https://en.wikipedia.org/w/api.php?action=help&modules=parse
+	 * @see https://en.wikipedia.org/w/api.php?action=parse&formatversion=2&prop=wikitext&page=Example
 	 * @param string $page Page name or ID
 	 * @param array $params Additional parameters for parse module
 	 * @return string Wikitext of the page
@@ -287,28 +291,29 @@ class EasyWiki {
 			'pageid' => is_int( $page ) ? $page : null,
 			'prop' => 'wikitext',
 		];
-		$wikitext = $this->parse( $params, 'wikitext' );
-		return $wikitext;
+		return $this->parse( $params, 'wikitext' );
 	}
 
 	/**
 	 * Get the HTML of a page
+	 * @see https://en.wikipedia.org/w/api.php?action=help&modules=parse
+	 * @see https://en.wikipedia.org/w/api.php?action=parse&formatversion=2&prop=text&page=Example
 	 * @param string|int $page Page name or ID
 	 * @param array $params Additional parameters for parse module
 	 * @return string HTML of the page
 	 */
-	public function getHTML( $page, array $params = [], $needle = '' ) {
+	public function getHTML( $page, array $params = [] ) {
 		$params += [
 			'page' => is_string( $page ) ? $page : null,
 			'pageid' => is_int( $page ) ? $page : null,
 			'prop' => 'text',
 		];
-		$html = $this->parse( $params, 'text' );
-		return $html;
+		return $this->parse( $params, 'text' );
 	}
 
 	/**
 	 * Create a page
+	 * @see https://en.wikipedia.org/w/api.php?action=help&modules=edit
 	 * @param string $page Name of the new page
 	 * @param string $text Content of the new page
 	 * @param array $params Additional parameters for edit module
@@ -319,91 +324,98 @@ class EasyWiki {
 			'recreate' => true,
 			'text' => $text,
 		];
-		$response = $this->edit( $title, $params, $needle );
-		return $response;
+		return $this->edit( $title, $params, $needle );
 	}
 
 	/**
 	 * Prepend wikitext to a page
+	 * @see https://en.wikipedia.org/w/api.php?action=help&modules=edit
 	 * @param string|int $page Name or ID of the page to edit
 	 * @param string $text Text to prepend
 	 * @param array $params Additional parameters for edit module
+	 * @return array Edit module response
 	 */
 	public function prepend( $page, string $text, array $params = [], $needle = '' ) {
 		$params += [
 			'prependtext' => $text,
 		];
-		$response = $this->edit( $page, $params, $needle );
-		return $response;
+		return $this->edit( $page, $params, $needle );
 	}
 
 	/**
 	 * Append wikitext to a page
+	 * @see https://en.wikipedia.org/w/api.php?action=help&modules=edit
 	 * @param string|int $page Name or ID of the page to edit
 	 * @param string $text Text to append
 	 * @param array $params Additional parameters for the edit module
+	 * @return array Edit module response
 	 */
 	public function append( $page, string $text, array $params = [], $needle = '' ) {
 		$params += [
 			'appendtext' => $text,
 		];
-		$response = $this->edit( $page, $params, $needle );
-		return $response;
+		return $this->edit( $page, $params, $needle );
 	}
 
 	/**
 	 * Get the categories of a page
+	 * @see https://en.wikipedia.org/w/api.php?action=help&modules=query+categories
 	 * @param string|int $page Name or ID of the page
-	 * @param array $params Additional parameters for the query module
-	 * @return string[] Indexed array of categories of the page (with the "Category:" prefix).
+	 * @param string $key Key of the piece of info to get. Omit to get an array with all the info.
+	 * @return array|string Page categories
 	 */
-	public function getCategories( $page, array $params = [], $needle = '' ) {
+	public function getCategories( $page, $key = '' ) {
 		$params += [
 			'titles' => is_string( $page ) ? $page : null,
 			'pageids' => is_int( $page ) ? $page : null,
 			'prop' => 'categories',
 			'cllimit' => 'max',
 		];
-		$pages = $this->query( $params, 'pages' );
-		if ( $pages ) {
-			$categories = $this->find( 'categories', $pages );
-		}
-		if ( $categories ) {
-			$titles = $this->find( 'title', $categories );
-		}
-		if ( $titles ) {
-			return $titles;
-		}
-		return [];
+		return $this->query( $params, $key );
 	}
 
 	/**
 	 * Get the basic info of a page
-	 * @see https://en.wikipedia.org/w/api.php?action=query&formatversion=2&prop=info&titles=Science
+	 * @see https://en.wikipedia.org/w/api.php?action=help&modules=query+info
 	 * @param string|int $page Name or ID of the page
-	 * @return array Requested page info
+	 * @param string $key Key of the piece of info to get. Omit to get an array with all the info.
+	 * @return array|string Page info
 	 */
-	public function getInfo( $page ) {
+	public function getInfo( $page, string $key = '' ) {
 		$params = [
 			'titles' => is_string( $page ) ? $page : null,
 			'pageids' => is_int( $page ) ? $page : null,
 			'prop' => 'info',
 		];
-		$info = $this->query( $params, 'pages' );
-		$info = $response[0];
-		return $info;
+		return $this->query( $params, $key );
+	}
+
+	/**
+	 * Get the basic info of a page
+	 * @see https://en.wikipedia.org/w/api.php?action=help&modules=query+categoryinfo
+	 * @param string|int $page Name or ID of the category (include the "Category:" prefix)
+	 * @param string $key Key of the piece of info to get. Omit to get an array with all the info.
+	 * @return array|string Category info
+	 */
+	public function getCategoryInfo( $category, string $key = '' ) {
+		$params = [
+			'titles' => is_string( $category ) ? $category : null,
+			'pageids' => is_int( $category ) ? $category : null,
+			'prop' => 'categoryinfo',
+		];
+		return $this->query( $params, $key );
 	}
 
 	/**
 	 * Get the general info of the site
-	 * @see https://en.wikipedia.org/w/api.php?action=query&formatversion=2&meta=siteinfo
-	 * @return array Requested site info
+	 * @see https://en.wikipedia.org/w/api.php?action=help&modules=query+siteinfo
+	 * @param string $key Key of the piece of info to get. Omit to get an array with all the info.
+	 * @return array|string Site info
 	 */
-	public function getSiteInfo() {
+	public function getSiteInfo( string $key = '' ) {
 		$params = [
 			'meta' => 'siteinfo',
 		];
-		$info = $this->query( $params, 'general' );
-		return $info;
+		return $this->query( $params, $key );
 	}
 }

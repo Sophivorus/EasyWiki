@@ -101,6 +101,11 @@ Search.appendIndex(
             "summary": "Get\u0020the\u0020basic\u0020info\u0020of\u0020a\u0020page",
             "url": "classes/EasyWiki.html#method_getInfo"
         },                {
+            "fqsen": "\\EasyWiki\u003A\u003AgetCategoryInfo\u0028\u0029",
+            "name": "getCategoryInfo",
+            "summary": "Get\u0020the\u0020basic\u0020info\u0020of\u0020a\u0020page",
+            "url": "classes/EasyWiki.html#method_getCategoryInfo"
+        },                {
             "fqsen": "\\EasyWiki\u003A\u003AgetSiteInfo\u0028\u0029",
             "name": "getSiteInfo",
             "summary": "Get\u0020the\u0020general\u0020info\u0020of\u0020the\u0020site",
