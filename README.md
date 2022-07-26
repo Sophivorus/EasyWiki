@@ -1,33 +1,14 @@
 # EasyWiki
 
-**EasyWiki** is a friendly PHP library to interact with [MediaWiki](https://mediawiki.org/).
+**EasyWiki** is a friendly PHP library to interact with [MediaWiki](https://mediawiki.org/). It's designed to be used both **in and out** the MediaWiki environment, by bots, scripts, extensions and other tools.
 
 ## Motivation
 
-EasyWiki is designed to be used both in and out the MediaWiki environment, by bots, scripts, extensions and other pieces of code.
+MediaWiki is ugly, very ugly. Not only ugly, but difficult. The priorities of the MediaWiki development team are generally in line with the necessities of Wikipedia and other Wikimedia projects, not of third-party projects and developers. As a consequence, developing in MediaWiki has become a daunting task: slots, singletons, contexts, factories and many other complexities. But it need not be so, EasyWiki promises a way out!
 
-Essentially, EasyWiki is a PHP client for the [MediaWiki Action API](https://www.mediawiki.org/wiki/API). When run in a MediaWiki environment, EasyWiki will [call the API internally](https://www.mediawiki.org/wiki/API:Calling_internally#From_application_code). This is much more efficient than calling an external API, though less efficient than calling PHP methods directly. However, unless extreme performance is needed, the overhead is more than compensated by the ease of use and other benefits. Machines should make life easier for humans, not the other way round!
-
-Using the API allows us to ignore any differences between doing things in or out the MediaWiki environment. Furthermore, given the very public nature of the API, it's way more stable and better documented than the internal way of doing things, so by using the API we can leave internal changes to the MediaWiki development team. Their priorities are generally in line with the necessities of Wikimedia projects and not of third-party projects and developers. As a consequence, developing in MediaWiki has become a daunting task: slots, singletons, contexts, factories and many other complexities. But it need not be so, EasyWiki promises a way out.
+Essentially, EasyWiki is a client for the [MediaWiki Action API](https://www.mediawiki.org/wiki/API). However, when run in a MediaWiki environment (for example in an extension), EasyWiki will [call the API internally](https://www.mediawiki.org/wiki/API:Calling_internally#From_application_code) to avoid unnecessary HTTP requests. This means that writing code for a local or remote wiki becomes almost the same. Furthermore, given the very public nature of the API, it's way more stable and better documented than the internal way of doing things, so by using the API we can leave internal changes to the MediaWiki development team.
 
 **Wiki developers of the world, unite!**
-
-## Features
-
-With EasyWiki you can easily:
-
-- Create pages
-- Edit pages
-- Move (rename) pages
-- Delete pages
-- Categorize and uncategorize pages
-- Get the wikitext of pages
-- Get the HTML of pages
-- Parse any wikitext into HTML
-- Get data from the API
-- Post data to the API
-
-...and so much more!
 
 ## Quickstart
 
