@@ -365,4 +365,16 @@ class EasyWiki {
 		$info = $response[0];
 		return $info;
 	}
+
+	/**
+	 * Get the general info of the site
+	 * Example: https://en.wikipedia.org/w/api.php?action=query&meta=siteinfo
+	 */
+	public function getSiteInfo( $needle = 'general' ) {
+		$params = [
+			'meta' => 'siteinfo',
+		];
+		$info = $this->query( $params, $needle );
+		return $info;
+	}
 }
