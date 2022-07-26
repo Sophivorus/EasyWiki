@@ -17,6 +17,7 @@ class EasyWiki {
 	 * @param string $api URL of the MediaWiki API endpoint to use
 	 * @param string $user Bot username to log in with
 	 * @param string $pass Bot password to log in with
+	 * @return self EasyWiki instance
 	 */
 	public function __construct( string $api = '', string $user = '', string $pass = '' ) {
 		if ( $api ) {
@@ -33,9 +34,10 @@ class EasyWiki {
 
 	/**
 	 * Do a GET request to the API
-	 * @param mixed[] $params Parameters of the GET request
+	 * @api
+	 * @param array $params Parameters of the GET request
 	 * @param string $needle Key of the data to extract from the response
-	 * @return mixed[] Response data
+	 * @return array Response data
 	 */
 	public function get( array $params = [], string $needle = '' ) {
 		$params += [
@@ -75,6 +77,7 @@ class EasyWiki {
 
 	/**
 	 * Do a POST request to the API
+	 * @api
 	 * @param array $params Parameters of the GET request
 	 * @param string $needle Key of the data to extract from the response
 	 * @return array Response data
@@ -118,6 +121,7 @@ class EasyWiki {
 
 	/**
 	 * Recursively search for a key in an array and return its value
+	 * @api
 	 * @param string $needle Key to find
 	 * @param array $haystack Array where to search
 	 * @return Value of the needle
