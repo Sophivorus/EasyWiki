@@ -1,19 +1,20 @@
 <?php
-/**
- * EasyWiki is a friendly PHP library to interact with MediaWiki
- * Authors: Sophivorus (Felipe Schenone)
- * License: GPL-3.0-or-later
- */
 
 /**
- * The EasyWiki library is composed of a single class
+ * The EasyWiki library is composed of this single class
  */
 class EasyWiki {
 
+	/**
+	 * Stores the URL of the MediaWiki API endpoint being used
+	 * @var string
+	 * @internal
+	 */
 	private $api;
 
 	/**
-	 * @param string $api URL of the MediaWiki API to communicate with
+	 * Initialize EasyWiki 
+	 * @param string $api URL of the MediaWiki API endpoint to use
 	 * @param string $user Bot username to log in with
 	 * @param string $pass Bot password to log in with
 	 */
@@ -32,9 +33,9 @@ class EasyWiki {
 
 	/**
 	 * Do a GET request to the API
-	 * @param array $params Parameters of the GET request
+	 * @param mixed[] $params Parameters of the GET request
 	 * @param string $needle Key of the data to extract from the response
-	 * @return array Response data
+	 * @return mixed[] Response data
 	 */
 	public function get( array $params = [], string $needle = '' ) {
 		$params += [
