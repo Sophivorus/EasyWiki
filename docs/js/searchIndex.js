@@ -3,7 +3,7 @@ Search.appendIndex(
                 {
             "fqsen": "\\EasyWiki",
             "name": "EasyWiki",
-            "summary": "",
+            "summary": "The\u0020EasyWiki\u0020library\u0020is\u0020composed\u0020of\u0020a\u0020single\u0020class",
             "url": "classes/EasyWiki.html"
         },                {
             "fqsen": "\\EasyWiki\u003A\u003A__construct\u0028\u0029",
@@ -103,7 +103,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\EasyWiki\u003A\u003AgetSiteInfo\u0028\u0029",
             "name": "getSiteInfo",
-            "summary": "Get\u0020the\u0020general\u0020info\u0020of\u0020the\u0020site\nExample\u003A\u0020https\u003A\/\/en.wikipedia.org\/w\/api.php\u003Faction\u003Dquery\u0026meta\u003Dsiteinfo",
+            "summary": "Get\u0020the\u0020general\u0020info\u0020of\u0020the\u0020site",
             "url": "classes/EasyWiki.html#method_getSiteInfo"
         },                {
             "fqsen": "\\EasyWiki\u003A\u003A\u0024api",

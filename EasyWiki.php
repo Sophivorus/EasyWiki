@@ -1,5 +1,13 @@
 <?php
+/**
+ * EasyWiki is a friendly PHP library to interact with MediaWiki
+ * Authors: Sophivorus (Felipe Schenone)
+ * License: GPL-3.0-or-later
+ */
 
+/**
+ * The EasyWiki library is composed of a single class
+ */
 class EasyWiki {
 
 	private $api;
@@ -338,6 +346,7 @@ class EasyWiki {
 	 * Get the categories of a page
 	 * @param string|int $page Name or ID of the page
 	 * @param array $params Additional parameters for the query module
+	 * @return array
 	 */
 	public function getCategories( $page, array $params = [], $needle = '' ) {
 		$params += [
@@ -352,6 +361,7 @@ class EasyWiki {
 
 	/**
 	 * Get the basic info of a page
+	 * @see https://en.wikipedia.org/w/api.php?action=query&formatversion=2&prop=info&titles=Science
 	 * @param string|int $page Name or ID of the page
 	 * @param array $params Additional parameters for the query module
 	 */
@@ -368,7 +378,8 @@ class EasyWiki {
 
 	/**
 	 * Get the general info of the site
-	 * Example: https://en.wikipedia.org/w/api.php?action=query&meta=siteinfo
+	 * @see https://en.wikipedia.org/w/api.php?action=query&formatversion=2&meta=siteinfo
+	 * @return array|string Requested site info
 	 */
 	public function getSiteInfo( $needle = 'general' ) {
 		$params = [
