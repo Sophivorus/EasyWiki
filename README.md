@@ -32,31 +32,32 @@ $wiki->edit( 'Wikipedia:Sandbox', 'Hello world!', [ 'summary' => 'Testing EasyWi
 
 ## Overview
 
-EasyWiki is a single PHP class with a very simple architecture, designed to be easily extensible:
+EasyWiki is a single PHP class with a very simple architecture:
 
-- **Base methods** for interacting with the MediaWiki API:
-    - `get()` make a GET request to the API
-    - `post()` make a POST request to the API
-    - `find()` extract data from the results
-- **Action methods** one per module:
+- **Base methods** are the basic building blocks to interact with the MediaWiki API:
+    - `get()` makes a GET request to the API
+    - `post()` makes a POST request to the API
+    - `find()` extracts data from the results
+- **Action methods** use the base methods to interact with the most frequent "action" modules. There's one method per module, named after the module:
     - `login()`
     - `logout()`
     - `query()`
     - `parse()`
-    - `edit()` create or edit an existing page
+    - `edit()`
     - `move()`
     - `delete()`
-- **Shorthand methods** for frequent tasks:
-    - `create()` create a page only if it doesn't exist
+- **Shorthand methods** use the action methods to further simplify frequent tasks.
+    - `create()`
     - `append()`
     - `prepend()`
     - `getHTML()`
     - `getWikitext()`
     - `getCategories()`
-    - `getInfo()` get general information about a page, for example the creation date, language, etc.
-    - `getSiteInfo()` get general information about the site, for example the site name, language, main page, etc.
+    - `getInfo()`
+    - `getSiteInfo()`
+    - `getToken()
 
-If none of the shorthand methods serves your needs, you can use the action methods, and if none of those serves you either, you can fallback to the base methods.
+If the assumptions of the shorthand methods don't serve your needs, you can use the action methods, and if their assumptions don't serve you either, you can fallback to the base methods.
 
 Each method has one argument for each required parameter and an optional last argument for extra parameters.
 
