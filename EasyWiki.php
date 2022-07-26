@@ -9,16 +9,18 @@ class EasyWiki {
 	 * @param string $user Bot username to log in with
 	 * @param string $pass Bot password to log in with
 	 */
-	public function __construct( string $api, string $user = '', string $pass = '' ) {
-		$this->api = $api;
+	public function __construct( string $api = '', string $user = '', string $pass = '' ) {
+		if ( $api ) {
+			$this->api = $api;
+		}
 		if ( $user && $pass ) {
 			$this->login( $user, $pass );
 		}
 	}
 
-	/**
-	 * BASE METHODS
-	 */
+	################
+	# BASE METHODS #
+	################
 
 	/**
 	 * Do a GET request to the API
@@ -35,21 +37,31 @@ class EasyWiki {
 		$params = array_filter( $params, function ( $value ) {
 			return !is_null( $value );
 		} );
-		$query = http_build_query( $params );
-		$curl = curl_init( $this->api . '?' . $query );
-		curl_setopt( $curl, CURLOPT_RETURNTRANSFER, true );
-		curl_setopt( $curl, CURLOPT_COOKIEJAR, '/tmp/cookie.txt' );
-		curl_setopt( $curl, CURLOPT_COOKIEFILE, '/tmp/cookie.txt' );
-		$response = curl_exec( $curl );
-		curl_close( $curl );
-		if ( !$response ) {
-			throw new Exception;
+		if ( $this->api ) {
+			$query = http_build_query( $params );
+			$curl = curl_init( $this->api . '?' . $query );
+			curl_setopt( $curl, CURLOPT_RETURNTRANSFER, true );
+			curl_setopt( $curl, CURLOPT_COOKIEJAR, '/tmp/cookie.txt' );
+			curl_setopt( $curl, CURLOPT_COOKIEFILE, '/tmp/cookie.txt' );
+			$response = curl_exec( $curl );
+			curl_close( $curl );
+			if ( !$response ) {
+				throw new Exception;
+			}
+			$data = json_decode( $response, true );
+		} else {
+			$context = RequestContext::getMain();
+			$request = $context->getRequest();
+			$derivative = new DerivativeRequest( $request, $params );
+			$api = new ApiMain( $derivative );
+			$api->execute();
+			$result = $api->getResult();
+			$data = $result->getResultData();
 		}
-		$response = json_decode( $response, true );
 		if ( $needle ) {
-			$response = $this->find( $needle, $response );
+			$data = $this->find( $needle, $data );
 		}
-		return $response;
+		return $data;
 	}
 
 	/**
@@ -67,22 +79,32 @@ class EasyWiki {
 		$params = array_filter( $params, function ( $value ) {
 			return !is_null( $value );
 		} );
-		$curl = curl_init( $this->api );
-		curl_setopt( $curl, CURLOPT_POST, true );
-		curl_setopt( $curl, CURLOPT_POSTFIELDS, $params );
-		curl_setopt( $curl, CURLOPT_RETURNTRANSFER, true );
-		curl_setopt( $curl, CURLOPT_COOKIEJAR, '/tmp/cookie.txt' );
-		curl_setopt( $curl, CURLOPT_COOKIEFILE, '/tmp/cookie.txt' );
-		$response = curl_exec( $curl );
-		curl_close( $curl );
-		if ( !$response ) {
-			throw new Exception;
+		if ( $this->api ) {
+			$curl = curl_init( $this->api );
+			curl_setopt( $curl, CURLOPT_POST, true );
+			curl_setopt( $curl, CURLOPT_POSTFIELDS, $params );
+			curl_setopt( $curl, CURLOPT_RETURNTRANSFER, true );
+			curl_setopt( $curl, CURLOPT_COOKIEJAR, '/tmp/cookie.txt' );
+			curl_setopt( $curl, CURLOPT_COOKIEFILE, '/tmp/cookie.txt' );
+			$response = curl_exec( $curl );
+			curl_close( $curl );
+			if ( !$response ) {
+				throw new Exception;
+			}
+			$data = json_decode( $response, true );
+		} else {
+			$context = RequestContext::getMain();
+			$request = $context->getRequest();
+			$derivative = new DerivativeRequest( $request, $params, true );
+			$api = new ApiMain( $derivative, true );
+			$api->execute();
+			$result = $api->getResult();
+			$data = $result->getResultData();
 		}
-		$response = json_decode( $response, true );
 		if ( $needle ) {
-			$response = $this->find( $needle, $response );
+			$data = $this->find( $needle, $data );
 		}
-		return $response;
+		return $data;
 	}
 
 	/**
@@ -105,9 +127,9 @@ class EasyWiki {
 		}
 	}
 
-	/**
-	 * ACTION METHODS
-	 */
+	##################
+	# ACTION METHODS #
+	##################
 
 	/**
 	 * Login module
@@ -218,9 +240,9 @@ class EasyWiki {
 		return $this->post( $params, $needle );
 	}
 
-	/**
-	 * SHORTHAND METHODS
-	 */
+	#####################
+	# SHORTHAND METHODS #
+	#####################
 
 	/**
 	 * Get a token for write actions
