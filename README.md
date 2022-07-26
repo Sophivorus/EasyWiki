@@ -2,9 +2,7 @@
 
 **EasyWiki** is a friendly PHP library to interact with [MediaWiki](https://mediawiki.org/). It's designed to be used both in and out the MediaWiki environment, by bots, scripts, extensions and other tools.
 
-This page contains general information about EasyWiki.
-
-**[Full documentation of all available methods](https://sophivorus.github.io/EasyWiki/classes/EasyWiki.html)**
+This page only contains general information about EasyWiki to get you started. Visit the [full documentation](https://sophivorus.github.io/EasyWiki/classes/EasyWiki.html) for details on all available methods.
 
 ## Motivation
 
