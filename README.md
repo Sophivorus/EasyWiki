@@ -4,7 +4,7 @@
 
 ## Motivation
 
-MediaWiki is ugly, very ugly. Not only ugly, but difficult. The priorities of the MediaWiki development team are generally in line with the necessities of Wikipedia and other Wikimedia projects, not of third-party projects and developers. As a consequence, developing in MediaWiki has become a daunting task: slots, singletons, contexts, factories and many other complexities. But it need not be so, EasyWiki promises a way out!
+MediaWiki is ugly, very ugly. Not only ugly, but difficult. The priorities of the MediaWiki development team are generally in line with the needs of Wikipedia and other Wikimedia projects, not of third-party projects and developers. As a consequence, developing in MediaWiki has become a daunting task: slots, singletons, contexts, factories and many other complexities. But it need not be so, EasyWiki promises a way out!
 
 Essentially, EasyWiki is a client for the [MediaWiki Action API](https://www.mediawiki.org/wiki/API). However, when run in a MediaWiki environment (for example in an extension), EasyWiki will [call the API internally](https://www.mediawiki.org/wiki/API:Calling_internally#From_application_code) to avoid unnecessary HTTP requests. This means that writing code for a local or remote wiki becomes almost the same. Furthermore, given the very public nature of the API, it's way more stable and better documented than the internal way of doing things, so by using the API we can leave internal changes to the MediaWiki development team.
 
