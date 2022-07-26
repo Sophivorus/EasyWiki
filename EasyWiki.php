@@ -34,7 +34,6 @@ class EasyWiki {
 
 	/**
 	 * Do a GET request to the API
-	 * @api
 	 * @param array $params Parameters of the GET request
 	 * @param string $needle Key of the data to extract from the response
 	 * @return array Response data
@@ -77,7 +76,6 @@ class EasyWiki {
 
 	/**
 	 * Do a POST request to the API
-	 * @api
 	 * @param array $params Parameters of the GET request
 	 * @param string $needle Key of the data to extract from the response
 	 * @return array Response data
@@ -121,22 +119,28 @@ class EasyWiki {
 
 	/**
 	 * Recursively search for a key in an array and return its value
-	 * @api
 	 * @param string $needle Key to find
 	 * @param array $haystack Array where to search
-	 * @return Value of the needle
+	 * @return mixed Value of the needle or null if not found
 	 */
 	public function find( string $needle, array $haystack ) {
+		$values = [];
 		foreach ( $haystack as $key => $value ) {
 			if ( $key === $needle ) {
-				return $value;
+				$values[] = $value;
 			}
 			if ( is_array( $value ) ) {
 				$value = $this->find( $needle, $value );
 				if ( !is_null( $value ) ) {
-					return $value;
+					$values[] = $value;
 				}
 			}
+		}
+		if ( $values ) {
+			if ( count( $values ) > 1 ) {
+				return $values;
+			}
+			return $values[0];
 		}
 	}
 
@@ -351,7 +355,7 @@ class EasyWiki {
 	 * Get the categories of a page
 	 * @param string|int $page Name or ID of the page
 	 * @param array $params Additional parameters for the query module
-	 * @return array
+	 * @return string[] Indexed array of categories of the page (with the "Category:" prefix).
 	 */
 	public function getCategories( $page, array $params = [], $needle = '' ) {
 		$params += [
@@ -360,23 +364,32 @@ class EasyWiki {
 			'prop' => 'categories',
 			'cllimit' => 'max',
 		];
-		$response = $this->query( $params, 'categories' );
-		return $response;
+		$pages = $this->query( $params, 'pages' );
+		if ( $pages ) {
+			$categories = $this->find( 'categories', $pages );
+		}
+		if ( $categories ) {
+			$titles = $this->find( 'title', $categories );
+		}
+		if ( $titles ) {
+			return $titles;
+		}
+		return [];
 	}
 
 	/**
 	 * Get the basic info of a page
 	 * @see https://en.wikipedia.org/w/api.php?action=query&formatversion=2&prop=info&titles=Science
 	 * @param string|int $page Name or ID of the page
-	 * @param array $params Additional parameters for the query module
+	 * @return array Requested page info
 	 */
-	public function getInfo( $page, array $params = [], $needle = '' ) {
-		$params += [
+	public function getInfo( $page ) {
+		$params = [
 			'titles' => is_string( $page ) ? $page : null,
 			'pageids' => is_int( $page ) ? $page : null,
 			'prop' => 'info',
 		];
-		$response = $this->query( $params, 'pages' );
+		$info = $this->query( $params, 'pages' );
 		$info = $response[0];
 		return $info;
 	}
@@ -384,13 +397,13 @@ class EasyWiki {
 	/**
 	 * Get the general info of the site
 	 * @see https://en.wikipedia.org/w/api.php?action=query&formatversion=2&meta=siteinfo
-	 * @return array|string Requested site info
+	 * @return array Requested site info
 	 */
-	public function getSiteInfo( $needle = 'general' ) {
+	public function getSiteInfo() {
 		$params = [
 			'meta' => 'siteinfo',
 		];
-		$info = $this->query( $params, $needle );
+		$info = $this->query( $params, 'general' );
 		return $info;
 	}
 }
