@@ -11,46 +11,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/EasyWiki.html#method___construct"
         },                {
-            "fqsen": "\\EasyWiki\u003A\u003Acreate\u0028\u0029",
-            "name": "create",
-            "summary": "Create\u0020a\u0020page",
-            "url": "classes/EasyWiki.html#method_create"
-        },                {
-            "fqsen": "\\EasyWiki\u003A\u003Aedit\u0028\u0029",
-            "name": "edit",
-            "summary": "Edit\u0020module",
-            "url": "classes/EasyWiki.html#method_edit"
-        },                {
-            "fqsen": "\\EasyWiki\u003A\u003Amove\u0028\u0029",
-            "name": "move",
-            "summary": "Move\u0020module",
-            "url": "classes/EasyWiki.html#method_move"
-        },                {
-            "fqsen": "\\EasyWiki\u003A\u003Adelete\u0028\u0029",
-            "name": "delete",
-            "summary": "Delete\u0020module",
-            "url": "classes/EasyWiki.html#method_delete"
-        },                {
-            "fqsen": "\\EasyWiki\u003A\u003Aparse\u0028\u0029",
-            "name": "parse",
-            "summary": "Parse\u0020module",
-            "url": "classes/EasyWiki.html#method_parse"
-        },                {
-            "fqsen": "\\EasyWiki\u003A\u003AgetWikitext\u0028\u0029",
-            "name": "getWikitext",
-            "summary": "Get\u0020the\u0020wikitext\u0020of\u0020a\u0020page",
-            "url": "classes/EasyWiki.html#method_getWikitext"
-        },                {
-            "fqsen": "\\EasyWiki\u003A\u003A\u0024user",
-            "name": "user",
-            "summary": "",
-            "url": "classes/EasyWiki.html#property_user"
-        },                {
-            "fqsen": "\\EasyWiki\u003A\u003A\u0024pass",
-            "name": "pass",
-            "summary": "",
-            "url": "classes/EasyWiki.html#property_pass"
-        },                {
             "fqsen": "\\EasyWiki\u003A\u003Aget\u0028\u0029",
             "name": "get",
             "summary": "Do\u0020a\u0020GET\u0020request\u0020to\u0020the\u0020API",
@@ -81,15 +41,45 @@ Search.appendIndex(
             "summary": "Query\u0020module",
             "url": "classes/EasyWiki.html#method_query"
         },                {
+            "fqsen": "\\EasyWiki\u003A\u003Aparse\u0028\u0029",
+            "name": "parse",
+            "summary": "Parse\u0020module",
+            "url": "classes/EasyWiki.html#method_parse"
+        },                {
+            "fqsen": "\\EasyWiki\u003A\u003Aedit\u0028\u0029",
+            "name": "edit",
+            "summary": "Edit\u0020module",
+            "url": "classes/EasyWiki.html#method_edit"
+        },                {
+            "fqsen": "\\EasyWiki\u003A\u003Amove\u0028\u0029",
+            "name": "move",
+            "summary": "Move\u0020module",
+            "url": "classes/EasyWiki.html#method_move"
+        },                {
+            "fqsen": "\\EasyWiki\u003A\u003Adelete\u0028\u0029",
+            "name": "delete",
+            "summary": "Delete\u0020module",
+            "url": "classes/EasyWiki.html#method_delete"
+        },                {
             "fqsen": "\\EasyWiki\u003A\u003AgetToken\u0028\u0029",
             "name": "getToken",
             "summary": "Get\u0020a\u0020token\u0020for\u0020write\u0020actions",
             "url": "classes/EasyWiki.html#method_getToken"
         },                {
+            "fqsen": "\\EasyWiki\u003A\u003AgetWikitext\u0028\u0029",
+            "name": "getWikitext",
+            "summary": "Get\u0020the\u0020wikitext\u0020of\u0020a\u0020page",
+            "url": "classes/EasyWiki.html#method_getWikitext"
+        },                {
             "fqsen": "\\EasyWiki\u003A\u003AgetHTML\u0028\u0029",
             "name": "getHTML",
             "summary": "Get\u0020the\u0020HTML\u0020of\u0020a\u0020page",
             "url": "classes/EasyWiki.html#method_getHTML"
+        },                {
+            "fqsen": "\\EasyWiki\u003A\u003Acreate\u0028\u0029",
+            "name": "create",
+            "summary": "Create\u0020a\u0020page",
+            "url": "classes/EasyWiki.html#method_create"
         },                {
             "fqsen": "\\EasyWiki\u003A\u003Aprepend\u0028\u0029",
             "name": "prepend",
