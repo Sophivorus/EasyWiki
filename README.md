@@ -53,8 +53,8 @@ EasyWiki is a single PHP class with a very simple architecture, designed to be e
     - `getHTML()`
     - `getWikitext()`
     - `getCategories()`
-    - `getInfo()`
-    - `getSiteInfo()` gets you general information about the site, for example the site name, language, main page, etc.
+    - `getInfo()` - Get general information about a page, for example the creation date, language, etc.
+    - `getSiteInfo()` - Get general information about the site, for example the site name, language, main page, etc.
 
 If none of the shorthand methods serves your needs, you can use the action methods, and if none of those serves you either, you can fallback to the base methods.
 
