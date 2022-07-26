@@ -1,8 +1,18 @@
 # EasyWiki
 
-**EasyWiki** is a friendly PHP library for interacting with the powerful [MediaWiki Action API](https://www.mediawiki.org/wiki/API).
+**EasyWiki** is a friendly PHP library to interact with [MediaWiki](https://mediawiki.org/).
 
-Use it to develop bots, scripts and other tools without having to deal with tokens, wrappers and other intricacies of the API.
+## Motivation
+
+EasyWiki is designed to be used both in and out the MediaWiki environment, by bots, scripts, extensions and other pieces of code.
+
+Essentially, EasyWiki is a PHP client for the [MediaWiki Action API](https://www.mediawiki.org/wiki/API). When run in a MediaWiki environment, EasyWiki will [call the API internally](https://www.mediawiki.org/wiki/API:Calling_internally#From_application_code). This is much more efficient than calling an external API, though less efficient than calling PHP methods directly. However, unless extreme performance is needed, the overhead is more than compensated by the ease of use and other benefits. Machines should make life easier for humans, not the other way round!
+
+Using the API allows us to ignore any differences between doing things in or out the MediaWiki environment. Furthermore, given the very public nature of the API, it's way more stable and better documented than the internal way of doing things, so by using the API we can leave internal changes to the MediaWiki development team. Their priorities are generally in line with the necessities of Wikimedia projects and not of third-party projects and developers. As a consequence, developing in MediaWiki has become a daunting task: slots, singletons, contexts, factories and many other complexities. But it need not be so, EasyWiki promises a way out.
+
+**Wiki developers of the world, unite!**
+
+## Features
 
 With EasyWiki you can easily:
 
@@ -41,7 +51,7 @@ $wiki->edit( 'Wikipedia:Sandbox', 'Hello world!', [ 'summary' => 'Testing EasyWi
 
 ## Overview
 
-EasyWiki has a very simple architecture:
+EasyWiki is a single PHP class with a very simple architecture, designed to be easily extensible:
 
 - **Base methods** for interacting with the MediaWiki API:
     - `get()` makes a GET request to the API
