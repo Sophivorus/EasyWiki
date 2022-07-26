@@ -2,6 +2,10 @@
 
 **EasyWiki** is a friendly PHP library to interact with [MediaWiki](https://mediawiki.org/). It's designed to be used both in and out the MediaWiki environment, by bots, scripts, extensions and other tools.
 
+This page contains general information about EasyWiki.
+
+**[Full documentation of all available methods](https://sophivorus.github.io/EasyWiki/classes/EasyWiki.html)**
+
 ## Motivation
 
 MediaWiki is ugly, very ugly. Not only ugly, but difficult. The priorities of the MediaWiki development team are generally in line with the needs of Wikipedia and other Wikimedia projects, not of third-party projects and developers. As a consequence, developing in MediaWiki has become a daunting task: slots, singletons, contexts, factories and many other complexities. But it need not be so, EasyWiki promises a way out!
@@ -35,26 +39,26 @@ $wiki->edit( 'Wikipedia:Sandbox', 'Hello world!', [ 'summary' => 'Testing EasyWi
 EasyWiki is a single PHP class with a very simple architecture, designed to be easily extensible:
 
 - **Base methods** for interacting with the MediaWiki API:
-    - `get()` makes a GET request to the API
-    - `post()` makes a POST request to the API
-    - `find()` extracts data from the results
+    - `get()` make a GET request to the API
+    - `post()` make a POST request to the API
+    - `find()` extract data from the results
 - **Action methods** one per module:
     - `login()`
     - `logout()`
     - `query()`
     - `parse()`
-    - `edit()`
+    - `edit()` create or edit an existing page
     - `move()`
     - `delete()`
 - **Shorthand methods** for frequent tasks:
-    - `create()`
+    - `create()` create a page only if it doesn't exist
     - `append()`
     - `prepend()`
     - `getHTML()`
     - `getWikitext()`
     - `getCategories()`
-    - `getInfo()` - Get general information about a page, for example the creation date, language, etc.
-    - `getSiteInfo()` - Get general information about the site, for example the site name, language, main page, etc.
+    - `getInfo()` get general information about a page, for example the creation date, language, etc.
+    - `getSiteInfo()` get general information about the site, for example the site name, language, main page, etc.
 
 If none of the shorthand methods serves your needs, you can use the action methods, and if none of those serves you either, you can fallback to the base methods.
 
