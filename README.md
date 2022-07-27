@@ -46,7 +46,7 @@ EasyWiki is a single PHP class with a very simple architecture:
     - `edit()`
     - `move()`
     - `delete()`
-- **Shorthand methods** use the action methods to further simplify frequent tasks:
+- **Shorthand methods** use the action methods to further simplify frequent requests:
     - `create()`
     - `append()`
     - `prepend()`
@@ -57,9 +57,7 @@ EasyWiki is a single PHP class with a very simple architecture:
     - `getSiteInfo()`
     - `getToken()`
 
-If the assumptions of the shorthand methods don't serve your needs, you can use the action methods, and if their assumptions don't serve you either, you can fallback to the base methods.
-
-Each method has one argument for each required parameter and an optional last argument for extra parameters.
+If none of the shorthand methods serves your needs, you can use the action methods, and if they don't help either, you can always fallback to the base methods.
 
 ## Manual
 
@@ -181,9 +179,3 @@ $wiki->move( 'Foo', 'Bar', [ 'noredirect' => true, 'movesubpages' => true ] );
 ```
 
 The available options are the same as the ones available in the relevant MediaWiki API action.
-
-### More
-
-Check the source code and the comments to learn about every available method.
-
-EasyWiki does very minimal assumptions. The only parameters hardcoded are the ones specifying the result format (json), result version (2) and the error format (plaintext). You can override them through the optional last argument.
