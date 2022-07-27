@@ -87,7 +87,7 @@ However, if you want to write data to a public wiki, or read data from a private
 
 ```php
 
-// Be very careful not to publish your password by mistake!!!
+// Be very careful not to publish your bot password by mistake!!!
 $wiki->login( 'Your bot username', 'Your bot password' );
 
 ```
