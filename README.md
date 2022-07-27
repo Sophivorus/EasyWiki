@@ -55,7 +55,7 @@ EasyWiki is a single PHP class with a very simple architecture:
     - `getCategories()`
     - `getInfo()`
     - `getSiteInfo()`
-    - `getToken()
+    - `getToken()`
 
 If the assumptions of the shorthand methods don't serve your needs, you can use the action methods, and if their assumptions don't serve you either, you can fallback to the base methods.
 
