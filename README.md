@@ -194,13 +194,6 @@ $Revision->setTimestamp( $timestamp );
 $Revision->importOldRevision(); // ...and this method is deprecated now
 ```
 
-Meanwhile, with EasyWiki:
-
-```php
-$wiki = new EasyWiki;
-$wiki->create( 'Foo', 'Hello world!' );
-```
-
 Similarly, if you wanted to simply edit a page:
 
 ```php
@@ -214,11 +207,10 @@ $Updater->setContent( 'main', $Content );
 $Updater->saveRevision( $Comment );
 ```
 
-But with EasyWiki:
+This ugliness is partly because the priorities of the MediaWiki development team are generally those of Wikipedia and other Wikimedia projects, not of third-party projects and developers. In any case, developing in MediaWiki has become a daunting task: slots, singletons, contexts, factories and many other complexities. But it need not be so, EasyWiki promises a way out! With EasyWiki, the two previous routines become:
 
 ```php
 $wiki = new EasyWiki;
+$wiki->create( 'Foo', 'Hello world!' );
 $wiki->edit( 'Foo', 'Bye world!' );
 ```
-
-This is partly because the priorities of the MediaWiki development team are generally those of Wikipedia and other Wikimedia projects, not of third-party projects and developers. In any case, developing in MediaWiki has become a daunting task: slots, singletons, contexts, factories and many other complexities. But it need not be so, EasyWiki promises a way out!
