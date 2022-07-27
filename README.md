@@ -32,7 +32,7 @@ $wiki->edit( 'Wikipedia:Sandbox', 'Hello world!', [ 'summary' => 'Testing EasyWi
 
 ## Overview
 
-EasyWiki is a single PHP class with a very simple architecture:
+EasyWiki is a single PHP class with a very simple architecture and minimal assumptions:
 
 - **Base methods** are the basic building blocks to interact with the MediaWiki API:
     - `get()` makes a GET request to the API
