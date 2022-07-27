@@ -90,9 +90,6 @@ However, if you want to write data to a public wiki, or read data from a private
 // Be very careful not to publish your password by mistake!!!
 $wiki->login( 'Your bot username', 'Your bot password' );
 
-// You can also login when initializing
-$wiki = new EasyWiki( 'https://en.wikipedia.org/w/api.php', 'Your bot username', 'Your bot password' );
-
 ```
 
 ### Reading
