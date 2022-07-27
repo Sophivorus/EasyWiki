@@ -56,17 +56,25 @@ EasyWiki is a single PHP class with a very simple architecture and minimal assum
 
 If none of the shorthand methods serves your needs, you can always call the base methods directly.
 
-## Manual
+## Installation
 
-### Installation
+### Manual
 
-1. Clone this repo or copy-paste the main EasyWiki.php file wherever you need it.
-2. Include or require the main EasyWiki.php file in your PHP project.
+1. Clone this repo or copy-paste the main EasyWiki.php file somewhere in your PHP project.
+2. Require the main EasyWiki.php file wherever you need it with:
 
 ```php
+require '/path/to/EasyWiki.php';
+```
 
-require_once '/path/to/EasyWiki.php';
+### Composer
 
+1. Require EasyWiki with `composer require sophivorus/easy-wiki` or through your composer.json or composer.local.json as `"sophivorus/easy-wiki": "^1.0"`
+2. Load the main EasyWiki class wherever you need it with:
+
+```php
+require '/path/to/autoload.php'; // This may not be necessary
+use Sophivorus\EasyWiki;
 ```
 
 ### Initialization
