@@ -6,9 +6,11 @@ EasyWiki is a single, simple, beautiful PHP class, so [checking the source code 
 
 ## Motivation
 
-MediaWiki is ugly, very ugly. Not only ugly, but difficult. This is partly because the priorities of the MediaWiki development team are generally those of Wikipedia and other Wikimedia projects, not of third-party projects and developers. As a consequence, developing in MediaWiki has become a daunting task: slots, singletons, contexts, factories and many other complexities. But it need not be so, EasyWiki promises a way out!
+MediaWiki is ugly, very ugly. Not only ugly, but difficult. This is partly because the priorities of the MediaWiki development team are generally those of Wikipedia and other Wikimedia projects, not of third-party projects and developers. In any case, developing in MediaWiki has become a daunting task: slots, singletons, contexts, factories and many other complexities. But it need not be so, EasyWiki promises a way out!
 
-EasyWiki is a client for the [MediaWiki Action API](https://www.mediawiki.org/wiki/API). However, when run in a MediaWiki environment (for example in an extension), EasyWiki will [call the API internally](https://www.mediawiki.org/wiki/API:Calling_internally#From_application_code) to avoid unnecessary HTTP requests. This means it can be used for interacting with local and remote wikis alike. Furthermore, due to the high use and public nature of the API, it's way more stable and better documented than the internal way of doing things, so chances of having to rewrite stuff due to internal architectural changes are slim. We can thus leave internal changes to the MediaWiki development team, and care only about the public way of doing things.
+EasyWiki is a client for the [MediaWiki Action API](https://www.mediawiki.org/wiki/API). However, when run in a MediaWiki environment (for example in an extension), EasyWiki will [call the API internally](https://www.mediawiki.org/wiki/API:Calling_internally#From_application_code), avoiding slow and unnecessary HTTP requests. Using the API rather than interal methods has some advantages:
+- Due to the high use and public nature of the API, it's way more stable and better documented than the internal way of doing things, so chances of having to rewrite stuff due to internal architectural changes are slim.
+- Coding for local and remote wikis becomes very similar or even the same, which makes porting and reusing scripts and routines easy.
 
 ## Quickstart
 
