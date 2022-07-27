@@ -26,7 +26,7 @@ $text = $wiki->getWikitext( 'Science' );
 // Authenticate to write data
 $wiki->login( 'Your bot username', 'Your bot password' );
 
-$wiki->edit( 'Wikipedia:Sandbox', 'Hello world!', [ 'summary' => 'Testing EasyWiki' ] );
+$wiki->edit( 'Wikipedia:Sandbox', $text, [ 'summary' => 'Testing EasyWiki' ] );
 
 ```
 
