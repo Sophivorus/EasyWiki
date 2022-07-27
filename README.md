@@ -14,15 +14,16 @@ EasyWiki is a single, simple, beautiful PHP class, so [checking the source code 
 require_once '/path/to/EasyWiki.php';
 
 // Connect to the English Wikipedia API
-$wiki = new EasyWiki( 'https://en.wikipedia.org/w/api.php' );
+$wikipedia = new EasyWiki( 'https://en.wikipedia.org/w/api.php' );
 
 // Read data immediately
-$text = $wiki->getWikitext( 'Science' );
+$wikitext = $wikipedia->getWikitext( 'Science' );
 
-// Authenticate to write data
-$wiki->login( 'Your bot username', 'Your bot password' );
+// Connect to your local wiki
+$wiki = new EasyWiki;
 
-$wiki->edit( 'Wikipedia:Sandbox', $text, [ 'summary' => 'Testing EasyWiki' ] );
+// Write data immediately
+$wiki->create( 'Science', $wikitext );
 
 ```
 
