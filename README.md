@@ -38,7 +38,7 @@ EasyWiki is a single PHP class with a very simple architecture and minimal assum
     - `get()` makes a GET request to the API
     - `post()` makes a POST request to the API
     - `find()` extracts data from the results
-- **Shorthand methods** use the base methods to simplify frequent requests:
+- **Shorthand methods** use the base methods to simplify common requests:
     - `login()`
     - `logout()`
     - `query()`
@@ -57,7 +57,7 @@ EasyWiki is a single PHP class with a very simple architecture and minimal assum
     - `getNamespaces()`
     - `getToken()`
 
-If none of the shorthand methods serves your needs, you can always fallback to the base methods.
+If none of the shorthand methods serves your needs, you can always call the base methods directly.
 
 ## Manual
 
