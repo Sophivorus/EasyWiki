@@ -200,7 +200,7 @@ Similarly, if you wanted to simply edit a page:
 $Title = Title::newFromText( 'Foo' )
 $User = User::newSystemUser( 'Bot' );
 $Page = WikiPage::factory( $Title );
-$Content = ContentHandler::makeContent( $text, $Title );
+$Content = ContentHandler::makeContent( 'Bye world!', $Title );
 $Comment = CommentStoreComment::newUnsavedComment( '' );
 $Updater = $Page->newPageUpdater( $User );
 $Updater->setContent( 'main', $Content );
