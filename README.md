@@ -82,10 +82,50 @@ use Sophivorus\EasyWiki;
 Once EasyWiki is available, initialize it by specifying an API endpoint:
 
 ```php
-
-// Create a EasyWiki instance connected to the English Wikipedia API
+// Create a EasyWiki instance connected to a remote wiki
 $wiki = new EasyWiki( 'https://en.wikipedia.org/w/api.php' );
+```
 
+If you're in a MediaWiki environment and want to connect to the local wiki, just omit the API endpoint:
+
+```php
+// Create a EasyWiki instance connected to the local wiki
+$wiki = new EasyWiki;
+```
+
+If you're not in a MediaWiki environment and want to connect to the local wiki, the easiest way is to connect as if it were a remote wiki.
+
+```php
+// Create a EasyWiki instance connected to the local wiki
+$wiki = new EasyWiki( 'https://www.yourwiki.org/w/api.php' );
+```
+
+However, if your code runs intensively, you may want a direct connection instead. If your code is run from the browser, you can do:
+
+```php
+// Initialize MediaWiki
+require '/path/to/wiki/includes/WebStart.php';
+
+// Create a EasyWiki instance connected to the local wiki
+$wiki = new EasyWiki;
+```
+
+And if your code is run from the console or a cronjob, you can wrap it in a [maintenance script](https://www.mediawiki.org/wiki/Manual:Writing_maintenance_scripts):
+
+```php
+// Initialize MediaWiki
+require '/path/to/wiki/maintenance/Maintenance.php';
+
+class EasyWikiScript extends Maintenance {
+
+	public function execute() {
+		// Create a EasyWiki instance connected to the local wiki
+		$wiki = new EasyWiki;
+	}
+}
+
+$maintClass = EasyWikiScript::class;
+require RUN_MAINTENANCE_IF_MAIN;
 ```
 
 ### Authentication
