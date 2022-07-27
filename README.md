@@ -61,7 +61,7 @@ If none of the shorthand methods serves your needs, you can always call the base
 ### Manual
 
 1. Clone this repo or copy-paste the main EasyWiki.php file somewhere in your PHP project.
-2. Require the main EasyWiki.php file wherever you need it with:
+2. Require the EasyWiki.php file wherever you need it with:
 
 ```php
 require '/path/to/EasyWiki.php';
@@ -70,7 +70,7 @@ require '/path/to/EasyWiki.php';
 ### Composer
 
 1. Require EasyWiki with `composer require sophivorus/easy-wiki` or add it as a dependency to your composer.json or composer.local.json as `"sophivorus/easy-wiki": "^1.0"`
-2. Load the main EasyWiki class wherever you need it with:
+2. Load the EasyWiki class wherever you need it with:
 
 ```php
 require '/path/to/autoload.php'; // This may not be necessary
