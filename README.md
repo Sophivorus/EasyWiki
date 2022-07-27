@@ -77,7 +77,7 @@ require '/path/to/autoload.php'; // This may not be necessary
 use Sophivorus\EasyWiki;
 ```
 
-### Initialization
+## Initialization
 
 Once EasyWiki is available, initialize it by specifying an API endpoint:
 
@@ -128,7 +128,7 @@ $maintClass = EasyWikiScript::class;
 require RUN_MAINTENANCE_IF_MAIN;
 ```
 
-### Authentication
+## Authentication
 
 If you only want to read data from a public wiki (such as Wikipedia) then **you don't need to authenticate**, you can move on to the next section.
 
@@ -141,7 +141,7 @@ $wiki->login( 'Your bot username', 'Your bot password' );
 
 ```
 
-### Reading
+## Reading
 
 ```php
 
@@ -184,7 +184,7 @@ foreach ( $languages as $language ) {
 
 ```
 
-### Writing
+## Writing
 
 ```php
 
