@@ -227,36 +227,38 @@ The available options are the same as the ones available in the relevant MediaWi
 MediaWiki is ugly, very ugly. Not only ugly, but difficult. For example, to simply create a page, the current, minimal internal routine would be:
 
 ```php
-$Title = Title::newFromText( 'Foo' );
-$User = User::newSystemUser( 'Bot' );
+$title = Title::newFromText( 'Foo' );
+$user = User::newSystemUser( 'Bot' );
 $timestamp = wfTimestampNow();
-$Config = HashConfig::newInstance();
-$Revision = new WikiRevision( $Config );
-$Revision->setTitle( $Title );
-$Revision->setModel( 'wikitext' );
-$Revision->setText( 'Hello world!' );
-$Revision->setUserObj( $User );
-$Revision->setTimestamp( $timestamp );
-$Revision->importOldRevision(); // ...and this method is deprecated now
+$config = HashConfig::newInstance();
+$revision = new WikiRevision( $config );
+$revision->setTitle( $title );
+$revision->setModel( 'wikitext' );
+$revision->setText( 'Hello world!' );
+$revision->setUserObj( $user );
+$revision->setTimestamp( $timestamp );
+$revision->importOldRevision(); // ...and this method is deprecated now
 ```
 
 Similarly, if you wanted to simply edit a page:
 
 ```php
-$Title = Title::newFromText( 'Foo' )
-$User = User::newSystemUser( 'Bot' );
-$Page = WikiPage::factory( $Title );
-$Content = ContentHandler::makeContent( 'Bye world!', $Title );
-$Comment = CommentStoreComment::newUnsavedComment( '' );
-$Updater = $Page->newPageUpdater( $User );
-$Updater->setContent( 'main', $Content );
-$Updater->saveRevision( $Comment );
+$title = Title::newFromText( 'Foo' )
+$user = User::newSystemUser( 'Bot' );
+$page = WikiPage::factory( $title );
+$content = ContentHandler::makeContent( 'Bye world!', $title );
+$comment = CommentStoreComment::newUnsavedComment( '' );
+$updater = $Page->newPageUpdater( user );
+$updater->setContent( 'main', $content );
+$updater->saveRevision( $comment );
 ```
 
-This ugliness is partly because the priorities of the MediaWiki development team are generally those of Wikipedia and other Wikimedia projects, not of third-party projects and developers. In any case, developing in MediaWiki has become a daunting task: slots, singletons, contexts, factories and many other complexities. But it need not be so, EasyWiki promises a way out! With EasyWiki, the two previous routines become:
+This ugliness is partly because the priorities of the MediaWiki development team are generally those of Wikipedia and other Wikimedia projects, not of third-party projects and developers. In any case, developing in MediaWiki has become a daunting task: slots, singletons, contexts, factories and many other complexities. But it need not be so, EasyWiki promises a way out!
 
 ```php
 $wiki = new EasyWiki;
 $wiki->create( 'Foo', 'Hello world!' );
 $wiki->edit( 'Foo', 'Bye world!' );
 ```
+
+This does exactly the same as the previous two routines, with minimal performance overhead.
