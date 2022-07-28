@@ -261,4 +261,4 @@ $wiki->create( 'Foo', 'Hello world!' );
 $wiki->edit( 'Foo', 'Bye world!' );
 ```
 
-This does exactly the same as the previous two routines, with minimal performance overhead.
+This does exactly the same as the previous two routines, with minimal performance loss.
