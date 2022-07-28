@@ -128,7 +128,7 @@ $maintClass = EasyWikiScript::class;
 require RUN_MAINTENANCE_IF_MAIN;
 ```
 
-Ultimately, these complications stem from a limitation with MediaWiki itself. Someday, perhaps with [MediaWiki 2.0](https://www.mediawiki.org/wiki/MediaWiki_2.0), connecting to a local wiki from outside a MediaWiki environment may be as easy as specifying the path to the installation rather than the API endpoint. Someday!
+Ultimately, these complications stem from limitations with MediaWiki itself. [Someday](https://www.mediawiki.org/wiki/MediaWiki_2.0), connecting to a local wiki from outside a MediaWiki environment may be as easy as specifying the path to the installation rather than the API endpoint. Someday!
 
 ## Authentication
 
