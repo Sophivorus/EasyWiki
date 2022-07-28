@@ -86,7 +86,7 @@ Once EasyWiki is available, initialize it by specifying an API endpoint:
 $wiki = new EasyWiki( 'https://en.wikipedia.org/w/api.php' );
 ```
 
-If you're in a MediaWiki environment and want to connect to the local wiki, just omit the API endpoint:
+If you're in a MediaWiki environment (for example a MediaWiki extension) and want to connect to the local wiki, just omit the API endpoint:
 
 ```php
 // Create a EasyWiki instance connected to the local wiki
