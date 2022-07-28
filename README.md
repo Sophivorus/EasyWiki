@@ -27,35 +27,6 @@ $wiki->create( 'Science', $wikitext );
 
 ```
 
-## Overview
-
-EasyWiki is a single PHP class with a very simple architecture and minimal assumptions:
-
-- **Base methods** are the basic building blocks to interact with the MediaWiki API:
-    - `get()` makes a GET request to the API
-    - `post()` makes a POST request to the API
-    - `find()` extracts data from the results
-- **Shorthand methods** use the base methods to simplify common requests:
-    - `login()`
-    - `logout()`
-    - `query()`
-    - `parse()`
-    - `edit()`
-    - `move()`
-    - `delete()`
-    - `create()`
-    - `append()`
-    - `prepend()`
-    - `getHTML()`
-    - `getWikitext()`
-    - `getCategories()`
-    - `getInfo()`
-    - `getSiteInfo()`
-    - `getNamespaces()`
-    - `getToken()`
-
-If none of the shorthand methods serves your needs, you can always call the base methods directly.
-
 ## Installation
 
 ### Manual
@@ -223,6 +194,35 @@ $wiki->move( 'Foo', 'Bar', [ 'noredirect' => true, 'movesubpages' => true ] );
 ```
 
 The available options are the same as the ones available in the relevant MediaWiki API action.
+
+## Architecture
+
+EasyWiki is a single PHP class with a very simple architecture and minimal assumptions:
+
+- **Base methods** are the basic building blocks to interact with the MediaWiki API:
+    - `get()` makes a GET request to the API
+    - `post()` makes a POST request to the API
+    - `find()` extracts data from the results
+- **Shorthand methods** use the base methods to simplify common requests:
+    - `login()`
+    - `logout()`
+    - `query()`
+    - `parse()`
+    - `edit()`
+    - `move()`
+    - `delete()`
+    - `create()`
+    - `append()`
+    - `prepend()`
+    - `getHTML()`
+    - `getWikitext()`
+    - `getCategories()`
+    - `getInfo()`
+    - `getSiteInfo()`
+    - `getNamespaces()`
+    - `getToken()`
+
+If none of the shorthand methods serves your needs, you can always call the base methods directly.
 
 ## Motivation
 
