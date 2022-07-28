@@ -110,7 +110,7 @@ require '/path/to/wiki/includes/WebStart.php';
 $wiki = new EasyWiki;
 ```
 
-But if your code runs internally (for example by a cronjob) you can wrap it in a [maintenance script](https://www.mediawiki.org/wiki/Manual:Writing_maintenance_scripts):
+But if your code runs internally (for example by a cronjob) you can wrap it with a [maintenance script](https://www.mediawiki.org/wiki/Manual:Writing_maintenance_scripts):
 
 ```php
 // Initialize MediaWiki
@@ -127,6 +127,8 @@ class EasyWikiScript extends Maintenance {
 $maintClass = EasyWikiScript::class;
 require RUN_MAINTENANCE_IF_MAIN;
 ```
+
+Ultimately, these complications stem from a limitation with MediaWiki itself. Someday, perhaps when [MediaWiki 2.0](https://www.mediawiki.org/wiki/MediaWiki_2.0) finally happens, connecting to a local wiki from outside a MediaWiki environment may be as easy as specifying the path to the installation instead of the API endpoint. Someday!
 
 ## Authentication
 
