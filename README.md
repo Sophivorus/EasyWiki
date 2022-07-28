@@ -64,7 +64,7 @@ If you're in a MediaWiki environment (for example a MediaWiki extension) and wan
 $wiki = new EasyWiki;
 ```
 
-If you're not in a MediaWiki environment and want to connect to the local wiki, the easiest way is to connect as if it were a remote wiki:
+If you're not in a MediaWiki environment and still want to connect to a local wiki (in the same server), the easiest way is to connect as if it were a remote wiki:
 
 ```php
 // Create a EasyWiki instance connected to the local wiki
