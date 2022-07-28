@@ -248,7 +248,7 @@ $user = User::newSystemUser( 'Bot' );
 $page = WikiPage::factory( $title );
 $content = ContentHandler::makeContent( 'Bye world!', $title );
 $comment = CommentStoreComment::newUnsavedComment( '' );
-$updater = $Page->newPageUpdater( user );
+$updater = $page->newPageUpdater( user );
 $updater->setContent( 'main', $content );
 $updater->saveRevision( $comment );
 ```
