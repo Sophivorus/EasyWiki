@@ -69,7 +69,7 @@ require '/path/to/EasyWiki.php';
 
 ### Composer
 
-1. Require EasyWiki with `composer require sophivorus/easy-wiki` or add it as a dependency to your composer.json or composer.local.json as `"sophivorus/easy-wiki": "^1.0"`
+1. Require EasyWiki with `composer require sophivorus/easy-wiki` or add it as a dependency to your project with `"sophivorus/easy-wiki": "^1.0"`
 2. Load the EasyWiki class wherever you need it with:
 
 ```php
