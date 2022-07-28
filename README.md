@@ -100,7 +100,7 @@ If you're not in a MediaWiki environment and want to connect to the local wiki, 
 $wiki = new EasyWiki( 'https://www.yourwiki.org/w/api.php' );
 ```
 
-However, if your code runs intensively, you may want a direct connection instead. If your code is run from the browser, you can do:
+However, if your code runs intensively, you may need a direct connection. If your code is run from the browser, you can do:
 
 ```php
 // Initialize MediaWiki
@@ -110,7 +110,7 @@ require '/path/to/wiki/includes/WebStart.php';
 $wiki = new EasyWiki;
 ```
 
-And if your code is run from the console or a cronjob, you can wrap it in a [maintenance script](https://www.mediawiki.org/wiki/Manual:Writing_maintenance_scripts):
+But if your code is run internally, for example by a cronjob, you can wrap it in a [maintenance script](https://www.mediawiki.org/wiki/Manual:Writing_maintenance_scripts):
 
 ```php
 // Initialize MediaWiki
