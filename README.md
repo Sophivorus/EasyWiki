@@ -100,7 +100,7 @@ If you're not in a MediaWiki environment and want to connect to the local wiki, 
 $wiki = new EasyWiki( 'https://www.yourwiki.org/w/api.php' );
 ```
 
-However, if your code runs intensively, you may need a direct connection to avoid slow and unnecessary HTTP requests. If your code runs from the browser, you can do:
+However, if your code runs intensively, you may want a direct connection to avoid slow and unnecessary HTTP requests. If your code runs from the browser, you can do:
 
 ```php
 // Initialize MediaWiki
