@@ -1,5 +1,7 @@
 <?php
 
+namespace Sophivorus;
+
 /**
  * The EasyWiki library is composed of this single class
  */
@@ -15,16 +17,11 @@ class EasyWiki {
 	/**
 	 * Initialize EasyWiki 
 	 * @param string $api URL of the MediaWiki API endpoint to use
-	 * @param string $user Bot username to log in with
-	 * @param string $pass Bot password to log in with
 	 * @return self EasyWiki instance
 	 */
-	public function __construct( string $api = '', string $user = '', string $pass = '' ) {
+	public function __construct( string $api = '' ) {
 		if ( $api ) {
 			$this->api = $api;
-		}
-		if ( $user && $pass ) {
-			$this->login( $user, $pass );
 		}
 	}
 
@@ -285,11 +282,10 @@ class EasyWiki {
 	 * @see https://en.wikipedia.org/w/api.php?action=help&modules=parse
 	 * @see https://en.wikipedia.org/w/api.php?action=parse&formatversion=2&prop=wikitext&page=Example
 	 * @param string $page Page name or ID
-	 * @param array $params Additional parameters for parse module
 	 * @return string Wikitext of the page
 	 */
-	public function getWikitext( $page, array $params = [] ) {
-		$params += [
+	public function getWikitext( $page ) {
+		$params = [
 			'page' => is_string( $page ) ? $page : null,
 			'pageid' => is_int( $page ) ? $page : null,
 			'prop' => 'wikitext',
@@ -302,11 +298,10 @@ class EasyWiki {
 	 * @see https://en.wikipedia.org/w/api.php?action=help&modules=parse
 	 * @see https://en.wikipedia.org/w/api.php?action=parse&formatversion=2&prop=text&page=Example
 	 * @param string|int $page Page name or ID
-	 * @param array $params Additional parameters for parse module
 	 * @return string HTML of the page
 	 */
-	public function getHTML( $page, array $params = [] ) {
-		$params += [
+	public function getHTML( $page ) {
+		$params = [
 			'page' => is_string( $page ) ? $page : null,
 			'pageid' => is_int( $page ) ? $page : null,
 			'prop' => 'text',
@@ -378,7 +373,7 @@ class EasyWiki {
 	}
 
 	/**
-	 * Get the basic info of a page
+	 * Get basic info about a page
 	 * @see https://en.wikipedia.org/w/api.php?action=help&modules=query+info
 	 * @param string|int $page Name or ID of the page
 	 * @param string $needle Key of the piece of info to get. Omit to get an array with all the info.
@@ -396,7 +391,7 @@ class EasyWiki {
 	}
 
 	/**
-	 * Get the general info of the site
+	 * Get general info about the site
 	 * @see https://en.wikipedia.org/w/api.php?action=help&modules=query+siteinfo
 	 * @param string $needle Key of the piece of info to get. Omit to get an array with all the info.
 	 * @return array|string Site info
@@ -406,6 +401,21 @@ class EasyWiki {
 			'meta' => 'siteinfo',
 		];
 		$data = $this->query( $params, 'general' );
+		return $this->find( $needle, $data );
+	}
+
+	/**
+	 * Get info about the namespaces of the site
+	 * @see https://en.wikipedia.org/w/api.php?action=help&modules=query+siteinfo
+	 * @param string $needle Key of the piece of info to get. Omit to get an array with all the info.
+	 * @return array|string Namespaces info
+	 */
+	public function getNamespaces( string $needle = '' ) {
+		$params = [
+			'meta' => 'siteinfo',
+			'siprop' => 'namespaces',
+		];
+		$data = $this->query( $params, 'namespaces' );
 		return $this->find( $needle, $data );
 	}
 }
