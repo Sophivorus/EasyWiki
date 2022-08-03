@@ -13,6 +13,11 @@
             "role": "Developer"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "Sophivorus\\": ""
+        }
+    },
     "require": {
         "php": ">=7.3"
     }
