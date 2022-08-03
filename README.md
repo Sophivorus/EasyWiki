@@ -103,9 +103,9 @@ Ultimately, these complications stem from limitations with MediaWiki itself. [So
 
 ## Authentication
 
-If you only want to read data from a public wiki (such as Wikipedia) then **you don't need to authenticate**, you can move on to the next section.
+If you only want to read data from a remote public wiki (such as Wikipedia), or write data to a local wiki, then **you don't need to authenticate**, you can move on to the next section.
 
-However, if you want to write data to a public wiki, or read data from a private wiki, you'll need to authenticate **with a bot account**. Bot accounts are created from Special:BotPasswords and are the simplest way to get through the MediaWiki security mechanisms.
+However, if you want to write data to a remote public wiki, or read data from a remote private wiki, you'll need to authenticate **with a bot account**. Bot accounts are created from Special:BotPasswords and are the simplest way to get through the MediaWiki security mechanisms.
 
 ```php
 
