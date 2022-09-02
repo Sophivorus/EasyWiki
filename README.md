@@ -1,6 +1,6 @@
 # EasyWiki
 
-**EasyWiki** is a friendly PHP library to interact with [MediaWiki](https://mediawiki.org/). It's designed to be used both in and out the MediaWiki environment, to develop bots, scripts, extensions and other tools.
+**EasyWiki** is a friendly PHP class to interact with [MediaWiki](https://mediawiki.org/). It's designed to be used both in and out the MediaWiki environment, to develop bots, scripts, extensions and other tools.
 
 Essentially, EasyWiki is a client for the [MediaWiki API](https://www.mediawiki.org/wiki/API). However, when run in a MediaWiki environment (for example as part of an extension), EasyWiki will [call the API internally](https://www.mediawiki.org/wiki/API:Calling_internally#From_application_code). This makes it an interesting option when developing locally because the API is way more stable, easier to use and better documented than the internal way of doing things (see [Motivation](#motivation)).
 
