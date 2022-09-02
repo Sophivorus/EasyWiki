@@ -127,9 +127,6 @@ $wiki->getHTML( 'Foo' );
 // Get the categories of the page named 'Foo'
 $wiki->getCategories( 'Foo' );
 
-// Check if the page named 'Foo' is in the category named 'Bar'
-$wiki->inCategory( 'Foo', 'Bar' );
-
 ```
 
 If none of the available methods serves your needs, you can always query the API directly. EasyWiki provides handy methods for doing so and for extracting the desired data from the results, but some familiarity with the [MediaWiki API](https://www.mediawiki.org/wiki/API) is required.
@@ -250,7 +247,7 @@ $user = User::newSystemUser( 'Bot' );
 $page = WikiPage::factory( $title );
 $content = ContentHandler::makeContent( 'Bye world!', $title );
 $comment = CommentStoreComment::newUnsavedComment( '' );
-$updater = $page->newPageUpdater( user );
+$updater = $page->newPageUpdater( $user );
 $updater->setContent( 'main', $content );
 $updater->saveRevision( $comment );
 ```
