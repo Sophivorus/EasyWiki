@@ -70,24 +70,17 @@ $api->getHTML( 'Foo' );
 $api->getCategories( 'Foo' );
 ```
 
-If none of the available methods serves your needs, you can always query the API directly. EasyWiki provides handy methods for doing so and for extracting the desired data from the results, but some familiarity with the [MediaWiki API](https://www.mediawiki.org/wiki/API) is required.
+If none of the available methods serves your needs, you can always query the API directly. EasyWiki provides handy methods for doing so and for extracting the desired data from the results, but some familiarity with the [MediaWiki Action API](https://www.mediawiki.org/wiki/API:Main_page) is required.
 
 ```php
-// Prepare a query (no need to specify the result format)
-$query = [
-    'titles' => 'Foo',
-    'action' => 'query',
-    'prop' => 'info'
-];
-
 // Get the results as an associative array
-$api = $api->get( $query );
+$data = $api->query( [ 'titles' => 'Foo', 'prop' => 'info' ] );
 
 // Magically extract the desired piece of data from the gazillion wrappers
 $language = $api->find( 'pagelanguage', $query );
 
 // If the result contains more than one relevant piece of data, you'll get an array of values instead
-$data = $api->get( [ 'titles' => 'Foo|Bar|Baz', 'action' => 'query', 'prop' => 'info' ] );
+$data = $api->query( [ 'titles' => 'Foo|Bar|Baz', 'prop' => 'info' ] );
 $languages = $api->find( 'pagelanguage', $data );
 foreach ( $languages as $language ) {
     echo $language;
