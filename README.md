@@ -6,44 +6,20 @@ EasyWiki is a single PHP class with a very simple [architecture](#Architecture),
 
 ## Quickstart
 
+```
+composer require sophivorus/easy-wiki
+```
+
 ```php
-// Copy-paste EasyWiki.php to your environment
-require_once '/path/to/EasyWiki.php';
+// Require and use EasyWiki
+require 'vendor/autoload.php';
+use Sophivorus\EasyWiki;
 
 // Connect to a MediaWiki API endpoint
 $api = new EasyWiki( 'https://en.wikipedia.org/w/api.php' );
 
 // Read data immediately
 $wikitext = $api->getWikitext( 'Science' );
-```
-
-## Installation
-
-### Composer
-
-1. Require EasyWiki with `composer require sophivorus/easy-wiki`
-2. Load the EasyWiki class wherever you need it:
-
-```php
-require '/path/to/autoload.php';
-```
-
-### Manual
-
-1. Clone this repo or copy-paste the main EasyWiki.php file somewhere in your PHP project.
-2. Require EasyWiki.php wherever you need it:
-
-```php
-require '/path/to/EasyWiki.php';
-```
-
-## Initialization
-
-Once EasyWiki is available, initialize it by specifying an API endpoint:
-
-```php
-// Create a EasyWiki instance connected to a remote wiki
-$api = new EasyWiki( 'https://en.wikipedia.org/w/api.php' );
 ```
 
 ## Authentication
