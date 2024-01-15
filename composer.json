@@ -1,6 +1,6 @@
 {
     "name": "sophivorus/easy-wiki",
-    "description": "Friendly PHP library for interacting with MediaWiki",
+    "description": "Friendly PHP client for the MediaWiki Action API",
     "keywords": ["wiki","mediawiki","wikipedia","wikipedia-api","mediawiki-api"],
     "homepage": "https://github.com/Sophivorus/EasyWiki",
 	"license": "GPL-3.0-or-later",
@@ -9,7 +9,7 @@
         {
             "name": "Sophivorus",
             "email": "schenonef@gmail.com",
-            "homepage": "https://sophivorus.com",
+            "homepage": "https://github.com/Sophivorus",
             "role": "Developer"
         }
     ],
