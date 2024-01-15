@@ -2,7 +2,7 @@
 
 **EasyWiki** is a friendly PHP client for the [MediaWiki Action API](https://www.mediawiki.org/wiki/API:Main_page).
 
-EasyWiki is a single PHP class with a very simple [architecture](#Architecture), so [check the source code directly](https://github.com/Sophivorus/EasyWiki/blob/main/EasyWiki.php) for the ultimate documentation.
+EasyWiki is a single PHP class with a very simple [architecture](#Architecture), so check out the [source code](https://github.com/Sophivorus/EasyWiki/blob/main/EasyWiki.php) for the ultimate documentation.
 
 ## Quickstart
 
@@ -11,7 +11,7 @@ composer require sophivorus/easy-wiki
 ```
 
 ```php
-// Require and use EasyWiki
+// Require and use
 require 'vendor/autoload.php';
 use Sophivorus\EasyWiki;
 
@@ -26,7 +26,7 @@ $wikitext = $api->getWikitext( 'Science' );
 
 If you only want to read data from a public wiki (such as Wikipedia), then **you don't need to authenticate**, you can move on to the next section.
 
-However, if you want to write data or read data from a private wiki, you'll need to authenticate **with a bot account**. Bot accounts are created from Special:BotPasswords and are the simplest way to get through the MediaWiki security mechanisms.
+However, if you want to write data or read data from a private wiki, then you'll need to authenticate **with a bot account**. Bot accounts are created from Special:BotPasswords and are the simplest way to get through the MediaWiki security mechanisms.
 
 ```php
 // Be very careful not to publish your bot password by accident!!!
@@ -46,7 +46,7 @@ $api->getHTML( 'Foo' );
 $api->getCategories( 'Foo' );
 ```
 
-If none of the available methods serves your needs, you can always query the API directly. EasyWiki provides handy methods for doing so and for extracting the desired data from the results, but some familiarity with the [MediaWiki Action API](https://www.mediawiki.org/wiki/API:Main_page) is required.
+If none of the available methods serves your needs, you can always query the API directly. EasyWiki provides handy methods for doing so and for extracting the desired data from the results. Check out the [MediaWiki Action API documentation](https://www.mediawiki.org/wiki/API:Main_page) for the available parameters.
 
 ```php
 // Get the results as an associative array
@@ -94,7 +94,7 @@ $api->move( 'Foo', 'Bar', [ 'noredirect' => true, 'movesubpages' => true ] );
 
 ## Architecture
 
-- **Base methods** are the basic building blocks to interact with the MediaWiki API:
+- **Base methods** are the basic building blocks to interact with the MediaWiki Action API:
     - `get()` makes a GET request to the API
     - `post()` makes a POST request to the API
     - `find()` extracts data from the results
