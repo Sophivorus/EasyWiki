@@ -14,9 +14,7 @@
         }
     ],
     "autoload": {
-        "psr-4": {
-            "Sophivorus\\": ""
-        }
+        "classmap": ["EasyWiki.php"]
     },
     "require": {
         "php": ">=7.3"

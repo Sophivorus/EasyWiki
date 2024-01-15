@@ -1,7 +1,5 @@
 <?php
 
-namespace Sophivorus;
-
 /**
  * EasyWiki is a friendly PHP client for the MediaWiki Action API
  */
