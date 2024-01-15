@@ -11,7 +11,6 @@ composer require sophivorus/easy-wiki
 ```
 
 ```php
-// Require and use
 require 'vendor/autoload.php';
 use Sophivorus\EasyWiki;
 
