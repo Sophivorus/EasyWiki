@@ -1,6 +1,6 @@
 # EasyWiki
 
-**EasyWiki** is a friendly PHP client for the [MediaWiki Action API](https://www.mediawiki.org/wiki/API).
+**EasyWiki** is a friendly PHP client for the [MediaWiki Action API](https://www.mediawiki.org/wiki/API:Main_page).
 
 EasyWiki is a single PHP class with a very simple [architecture](#Architecture), so [check the source code directly](https://github.com/Sophivorus/EasyWiki/blob/main/EasyWiki.php) for the ultimate documentation.
 
@@ -21,7 +21,7 @@ $wikitext = $api->getWikitext( 'Science' );
 
 ### Composer
 
-1. Require EasyWiki with `composer require sophivorus/easy-wiki` or add it as a dependency to your project with `"sophivorus/easy-wiki": "^1.0"`
+1. Require EasyWiki with `composer require sophivorus/easy-wiki`
 2. Load the EasyWiki class wherever you need it:
 
 ```php
@@ -70,24 +70,17 @@ $api->getHTML( 'Foo' );
 $api->getCategories( 'Foo' );
 ```
 
-If none of the available methods serves your needs, you can always query the API directly. EasyWiki provides handy methods for doing so and for extracting the desired data from the results, but some familiarity with the [MediaWiki API](https://www.mediawiki.org/wiki/API) is required.
+If none of the available methods serves your needs, you can always query the API directly. EasyWiki provides handy methods for doing so and for extracting the desired data from the results, but some familiarity with the [MediaWiki Action API](https://www.mediawiki.org/wiki/API:Main_page) is required.
 
 ```php
-// Prepare a query (no need to specify the result format)
-$query = [
-    'titles' => 'Foo',
-    'action' => 'query',
-    'prop' => 'info'
-];
-
 // Get the results as an associative array
-$api = $api->get( $query );
+$data = $api->query( [ 'titles' => 'Foo', 'prop' => 'info' ] );
 
 // Magically extract the desired piece of data from the gazillion wrappers
 $language = $api->find( 'pagelanguage', $query );
 
 // If the result contains more than one relevant piece of data, you'll get an array of values instead
-$data = $api->get( [ 'titles' => 'Foo|Bar|Baz', 'action' => 'query', 'prop' => 'info' ] );
+$data = $api->query( [ 'titles' => 'Foo|Bar|Baz', 'prop' => 'info' ] );
 $languages = $api->find( 'pagelanguage', $data );
 foreach ( $languages as $language ) {
     echo $language;
@@ -124,8 +117,6 @@ $api->move( 'Foo', 'Bar', [ 'noredirect' => true, 'movesubpages' => true ] );
 ```
 
 ## Architecture
-
-EasyWiki is a single PHP class with a very simple architecture and minimal assumptions:
 
 - **Base methods** are the basic building blocks to interact with the MediaWiki API:
     - `get()` makes a GET request to the API
