@@ -21,7 +21,7 @@ $wikitext = $api->getWikitext( 'Science' );
 
 ### Composer
 
-1. Require EasyWiki with `composer require sophivorus/easy-wiki` or add it as a dependency to your project with `"sophivorus/easy-wiki": "^1.0"`
+1. Require EasyWiki with `composer require sophivorus/easy-wiki`
 2. Load the EasyWiki class wherever you need it:
 
 ```php
@@ -124,8 +124,6 @@ $api->move( 'Foo', 'Bar', [ 'noredirect' => true, 'movesubpages' => true ] );
 ```
 
 ## Architecture
-
-EasyWiki is a single PHP class with a very simple architecture and minimal assumptions:
 
 - **Base methods** are the basic building blocks to interact with the MediaWiki API:
     - `get()` makes a GET request to the API
