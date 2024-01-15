@@ -1,7 +1,9 @@
 <?php
 
+namespace Sophivorus;
+
 /**
- * EasyWiki is composed of this single class
+ * EasyWiki is a friendly PHP client for the MediaWiki Action API
  */
 class EasyWiki {
 
@@ -48,7 +50,7 @@ class EasyWiki {
 		curl_close( $curl );
 		if ( !$response ) {
 			$message = curl_error( $curl );
-			throw new Exception( $message );
+			throw new \Exception( $message );
 		}
 		$data = json_decode( $response, true );
 		return $data;
@@ -78,7 +80,7 @@ class EasyWiki {
 		curl_close( $curl );
 		if ( !$response ) {
 			$message = curl_error( $curl );
-			throw new Exception( $message );
+			throw new \Exception( $message );
 		}
 		$data = json_decode( $response, true );
 		return $data;
@@ -135,7 +137,7 @@ class EasyWiki {
 		$result = $this->find( 'result', $response );
 		if ( $result === 'Failed' ) {
 			$message = $this->find( 'text', $response );
-			throw new Exception( $message );
+			throw new \Exception( $message );
 		}
 		return $response;
 	}
