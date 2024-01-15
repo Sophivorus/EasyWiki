@@ -25,7 +25,7 @@ $wikitext = $api->getWikitext( 'Science' );
 
 If you only want to read data from a public wiki (such as Wikipedia), then **you don't need to authenticate**, you can move on to the next section.
 
-However, if you want to write data or read data from a private wiki, then you'll need to authenticate **with a bot account**. Bot accounts are created from Special:BotPasswords and are the simplest way to get through the MediaWiki security mechanisms.
+However, if you want to write data or read data from a private wiki, you'll need to authenticate **with a bot account**. Bot accounts are created from Special:BotPasswords and are the simplest way to get through the MediaWiki security mechanisms.
 
 ```php
 // Be very careful not to publish your bot password by accident!!!
