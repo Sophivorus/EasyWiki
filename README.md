@@ -10,7 +10,6 @@ composer require sophivorus/easy-wiki
 
 ```php
 require 'vendor/autoload.php';
-use Sophivorus\EasyWiki;
 
 // Connect to a MediaWiki Action API endpoint
 $api = new EasyWiki( 'https://en.wikipedia.org/w/api.php' );
