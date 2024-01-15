@@ -2,8 +2,6 @@
 
 **EasyWiki** is a friendly PHP client for the [MediaWiki Action API](https://www.mediawiki.org/wiki/API:Main_page).
 
-EasyWiki is a single PHP class with a very simple [architecture](https://github.com/Sophivorus/EasyWiki?tab=readme-ov-file#architecture), so check out the [source code](https://github.com/Sophivorus/EasyWiki/blob/main/EasyWiki.php) for the ultimate documentation.
-
 ## Quickstart
 
 ```
@@ -14,7 +12,7 @@ composer require sophivorus/easy-wiki
 require 'vendor/autoload.php';
 use Sophivorus\EasyWiki;
 
-// Connect to a MediaWiki API endpoint
+// Connect to a MediaWiki Action API endpoint
 $api = new EasyWiki( 'https://en.wikipedia.org/w/api.php' );
 
 // Read data immediately
@@ -92,6 +90,8 @@ $api->move( 'Foo', 'Bar', [ 'noredirect' => true, 'movesubpages' => true ] );
 ```
 
 ## Architecture
+
+Check out the [source code](https://github.com/Sophivorus/EasyWiki/blob/main/EasyWiki.php) for the ultimate documentation.
 
 - **Base methods** are the basic building blocks to interact with the MediaWiki Action API:
     - `get()` makes a GET request to the API
