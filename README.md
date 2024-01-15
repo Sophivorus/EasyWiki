@@ -2,7 +2,7 @@
 
 **EasyWiki** is a friendly PHP client for the [MediaWiki Action API](https://www.mediawiki.org/wiki/API:Main_page).
 
-EasyWiki is a single PHP class with a very simple [architecture](https://github.com/Sophivorus/EasyWiki#Architecture)), so check out the [source code](https://github.com/Sophivorus/EasyWiki/blob/main/EasyWiki.php) for the ultimate documentation.
+EasyWiki is a single PHP class with a very simple [architecture](https://github.com/Sophivorus/EasyWiki#Architecture), so check out the [source code](https://github.com/Sophivorus/EasyWiki/blob/main/EasyWiki.php) for the ultimate documentation.
 
 ## Quickstart
 
